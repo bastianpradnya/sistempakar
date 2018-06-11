@@ -34,8 +34,49 @@
         </div>
       </div>
     </div>
-    <!-- /.container-fluid-->
-    <?php 
+
+      <!-- Example DataTables Card-->
+      <?php
+	      include "koneksi.php";
+	      $sql = "select * from penyakit order by kode_penyakit";
+	      $hasil = mysqli_query($konek, $sql);
+	      if(!$hasil){
+		      die ("Gagal Query..".mysqli_error($konek));
+	      }
+      ?>
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Tabel Data Penyakit</div>
+          <a class="btn btn-primary btn-block" href="tambah_penyakit.php">Tambah Data Penyakit</a>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Kode</th>
+                  <th>Nama Penyakit</th>
+                  <th>Operasi</th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php
+		            while ($row = mysqli_fetch_assoc($hasil)){
+			            echo " <tr> ";
+			            echo " <td> ".$row['kode_penyakit']."</td>";
+                  echo " <td> ".$row['nama_penyakit']."</td>";
+                  echo " <td> "."Ubah | Hapus "."</td>";
+			            echo " </tr> ";
+		            }
+	            ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- /.container-fluid-->
+   <?php 
       include "footer.php";
     ?>
     <!-- Bootstrap core JavaScript-->
