@@ -64,8 +64,9 @@
 			            echo " <tr> ";
 			            echo " <td> ".$row['kode_penyakit']."</td>";
                   echo " <td> ".$row['nama_penyakit']."</td>";
-                  echo " <td> "."Ubah | Hapus "."</td>";
-			            echo " </tr> ";
+                  echo " <td> "."<a href='edit_penyakit.php?kode=".$row['kode_penyakit']."'>Edit</a> | ".
+                  "<a href='hapus_penyakit.php?kode=".$row['kode_penyakit']."'>Hapus</a>"."</td>";
+                  echo " </tr> ";
 		            }
 	            ?>
               </tbody>
