@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
+  <title>Masuk</title>
   <!-- Bootstrap core CSS-->
   <link href="../tampilan_pakar/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -30,14 +30,14 @@
       <div class="card-body">
         <form action="login_process.php" method="post">
           <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
+            <label for="exampleInputEmail1">Nama Pengguna</label>
             <input class="form-control" id="exampleInputEmail1" name="username" type="text" aria-describedby="emailHelp" placeholder="Enter email">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label for="exampleInputPassword1">Kata Sandi</label>
             <input class="form-control" id="exampleInputPassword1" name="password" type="password" placeholder="Password">
           </div>
-          <input class="btn btn-primary btn-block" type="submit" name="submit" value="Login"/>
+          <input class="btn btn-primary btn-block" type="submit" name="submit" value="Masuk"/>
         </form>
       </div>
     </div>

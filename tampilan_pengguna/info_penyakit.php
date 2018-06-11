@@ -23,7 +23,7 @@
             <div class="p-5">
             </div>
 
-            ini tentang
+            ini informasi penyakit
 
           </div>
         </div>

@@ -11,10 +11,10 @@
               <a class="nav-link" href="index.php">beranda</a>
             </li>
              <li class="nav-item">
-              <a class="nav-link" href="konsultasi.php">konsultasi</a>
+              <a class="nav-link" href="info_penyakit.php">informasi penyakit</a>
             </li>
              <li class="nav-item">
-              <a class="nav-link" href="tentang.php">tentang</a>
+              <a class="nav-link" href="konsultasi.php">konsultasi</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../proses_login/login.php">masuk</a>
