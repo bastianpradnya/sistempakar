@@ -46,9 +46,9 @@
       ?>
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Tabel Data Gejala <div class="d-flex justify-between"><a class="btn btn-primary" align="right" href="tambah_gejala.php">Tambah Data Gejala</a></div></div>
+          <i class="fa fa-table"></i> Tabel Data Gejala</div>
           <div class="" align="right" style="padding:15px;">
-            <a class="btn btn-primary" href="tambah_gejala.php">Tambah Data Gejala</a>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#tambah">Tambah Data Gejala</button>
           </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -65,10 +65,8 @@
 			                 <tr>
   			                 <td><?php echo $row['kode_gejala'] ?></td>
                          <td><?php echo $row['nama_gejala'] ?></td>
-                         
-                         <td><button class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit<?php echo $row['kode_gejala'] ?>">
-                            Edit</button>&nbsp;<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus<?php echo $row['kode_gejala'] ?>">
-                            Hapus</button>
+                         <td><button class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit<?php echo $row['kode_gejala'] ?>">Edit</button>&nbsp;&nbsp;
+                             <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus<?php echo $row['kode_gejala'] ?>">Hapus</button></td>
                        </tr>
                 <?php } ?>
               </tbody>
@@ -80,6 +78,37 @@
   </div>
    <!-- /.container-fluid-->
 
+    <!-- Tambah Modal-->
+    <div class="modal" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Gejala</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">     
+                <form name="update" method="post" action="simpan_gejala.php">
+                  <div class="form-group">
+                    <label for="text">Kode Gejala:</label>
+                    <input type="text" name="kode" class="form-control" value="<?php echo $row['kode_gejala'] ?>" id="kode_gejala">
+                  </div>
+                    <div class="form-group">
+                      <label for="text">Nama Gejala:</label>
+                      <input type="text" name="nama" class="form-control" value="<?php echo $row['nama_gejala'] ?>" id="nama_gejala">
+                    </div>
+                  <button class="btn btn-info" type="submit">Simpan</button>
+                  <button class="btn btn-danger" type="button" data-dismiss="modal" aria-label="Close">Batal</button>
+                </form>
+            </div>
+          </div>
+          </div>
+          </div>
+          </div>
+          </div>
+
+
       <?php
         include "koneksi.php";
         $sql = "select * from gejala order by kode_gejala";
@@ -89,41 +118,36 @@
         }
       ?>
 
-    <?php while ($row = mysqli_fetch_assoc($hasil)) { ?>
-    <!-- Logout Modal-->
-    <div class="modal" id="edit<?php echo $row['kode_gejala'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
+       <?php while ($row = mysqli_fetch_assoc($hasil)) { ?>
+        <!-- Ubah Modal-->
+        <div class="modal" id="edit<?php echo $row['kode_gejala'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Gejala</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">     
+                <form name="update" method="post" action="proses_edit_gejala.php">
+                  <div class="form-group">
+                    <label for="text">Kode Gejala:</label>
+                    <input type="text" name="kode" class="form-control" value="<?php echo $row['kode_gejala'] ?>" id="kode_gejala">
+                  </div>
+                    <div class="form-group">
+                      <label for="text">Nama Gejala:</label>
+                      <input type="text" name="nama" class="form-control" value="<?php echo $row['nama_gejala'] ?>" id="nama_gejala">
+                    </div>
+                  <button class="btn btn-info" type="submit">Edit</button>
+                  <button class="btn btn-danger" type="button" data-dismiss="modal" aria-label="Close">Batal</button>
+                </form>
+            </div>
           </div>
-          <div class="modal-body">
-           <a href="index.php">Home</a>
-  
-            <form name="update" method="post" action="proses_edit_gejala.php">
-              <table border="0">
-                <tr> 
-                  <td>Kode Gejala</td>
-                  <input type="text" name="kode" value="<?php echo $row['kode_gejala'] ?>"></td>
-                </tr>
-                <tr> 
-                  <td>Nama Gejala</td>
-                  <td><input type="text" name="nama" value="<?php echo $row['nama_gejala'] ?>"></td>
-                </tr>
-                <tr>
-                  <td><input type="hidden" name="kode" value="<?php echo $_GET['kode'];?>"></td>
-                  <td><input type="submit" name="update" value="Ubah"></td>
-                </tr>
-              </table>
-            </form>
+          </div>
         </div>
       </div>
-      </div>
-    </div>
-    <?php } ?>
+      <?php } ?>
 
      <?php
         include "koneksi.php";
@@ -135,26 +159,26 @@
       ?>
 
     <?php while ($row = mysqli_fetch_assoc($hasil)) { ?>
-    <!-- Logout Modal-->
-    <div class="modal" id="hapus<?php echo $row['kode_gejala'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
+      <!-- Hapus Modal-->
+        <div class="modal" id="hapus<?php echo $row['kode_gejala'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Peringatan</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+              Yakin ingin menghapus data <?php echo $row['nama_gejala'] ?> ?
+            </div>
+            <div class="modal-footer">
+              <a href=hapus_gejala.php?kode=<?php echo $row['kode_gejala'] ?> class="btn btn-primary">Ya</a>
+              <button class="btn btn-danger" type="button" data-dismiss="modal" aria-label="Close">Batal</button>
+            </div>
           </div>
-          <div class="modal-body">
-           Yakin mau Hapus Data <?php echo $row['nama_gejala'] ?> ?
+          </div>
         </div>
-        <div class="modal-footer">
-          <a href"<?php echo $row['kode_gejala'] ?>" class="btn btn-primary">Ya</a>
-          <button class="btn btn-danger" type="button" data-dismiss="modal" aria-label="Close">Batal</button>
-        </div>
-      </div>
-      </div>
-    </div>
     <?php } ?>
 
 
