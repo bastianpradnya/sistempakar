@@ -33,7 +33,6 @@
           <p>This is an example of a blank page that you can use as a starting point for creating new ones.</p>
         </div>
       </div>
-    </div>
 
       <!-- Example DataTables Card-->
       <?php
