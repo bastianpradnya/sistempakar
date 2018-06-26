@@ -73,7 +73,10 @@
                             echo $tampil['nama_penyakit'];
                           ?>
                          </td>
-                         <td><button class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail<?php echo $row['kode_penyakit'] ?>">Detail</button>
+                         <td>
+                          <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail<?php echo $row['kode_penyakit'] ?>">Detail</button>&nbsp;&nbsp;
+                          <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus<?php echo $row['kode_penyakit'] ?>">Hapus</button>
+                         </td>
                        </tr>
                 <?php } ?>
               </tbody>
@@ -90,22 +93,27 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Penyakit</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Informasi Penyakit</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
               <div class="modal-body">     
-                <form action="simpan_penyakit.php" method="post">
-                  <div class="form-group">
-                    <label for="text">Kode Penyakit:</label>
-                    <input type="text" class="form-control" name="kode_penyakit">
+              <form action="tambah_solusi.php" method="post">
+                <div class="form-group">
+                <?php
+                  include "koneksi.php";
+                  $sql3 = "select * from penyakit order by kode_penyakit";
+                  $nama2 = mysqli_query($konek, $sql3);
+                ?>
+                  <label for="sel1">Pilih Penyakit:</label>
+                    <select class="form-control" name="sel1">
+                    <?php while ($row3 = mysqli_fetch_assoc($nama2)){ ?>
+                      <option><?php echo $row3['nama_penyakit']?></option>
+                      <?php } ?>
+                    </select>
                   </div>
-                    <div class="form-group">
-                      <label for="text">Nama Penyakit:</label>
-                      <input type="text" class="form-control" name="nama_penyakit">
-                    </div>
-                  <button class="btn btn-info" type="submit">Simpan</button>
+                  <button class="btn btn-info" type="submit">Lanjutkan</button>
                   <button class="btn btn-danger" type="button" data-dismiss="modal" aria-label="Close">Batal</button>
                 </form>
               </div>
@@ -113,7 +121,6 @@
           </div>
           </div>
     </div>
-
 
       <?php
         include "koneksi.php";
@@ -130,54 +137,34 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Detail Penyakit</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Detail Penyakit  
+                  <?php 
+                      include "koneksi.php";
+                      $sql2 = "select nama_penyakit from penyakit where kode_penyakit='".$row['kode_penyakit']."'";
+                      $nama = mysqli_query($konek, $sql2);
+                      $tampil = mysqli_fetch_assoc($nama);
+                      echo $tampil['nama_penyakit'];
+                  ?>
+                </h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
               <div class="modal-body">     
-                <form action="proses_edit_penyakit.php" method="post">
+                <form action="edit_solusi.php" method="post">
                   <div class="form-group">
                     <label for="text">Kode Penyakit:</label>
                     <input type="text" name="kode" class="form-control" readonly value="<?php echo $row['kode_penyakit'] ?>">
                   </div>
                     <div class="form-group">
-                      <label for="text">Nama Penyakit:</label>
-                      <input type="text" name="nama" class="form-control" value="<?php echo $row['penyebab'] ?>">
+                      <label for="comment">Penyebab :</label>
+                      <textarea class="form-control" rows="5" id="comment" id="message" name="penyebab" readonly><?php echo $row['penyebab']?></textarea>
                     </div>
-                  <button class="btn btn-info" type="submit">Simpan</button>
-                  <button class="btn btn-danger" type="button" data-dismiss="modal" aria-label="Close">Batal</button>
-                </form>
-            </div>
-          </div>
-          </div>
-        </div>
-      </div>
-      <?php } ?>
-
-
-       <?php while ($row = mysqli_fetch_assoc($hasil)) { ?>
-        <!-- Ubah Modal-->
-        <div class="modal" id="edit<?php echo $row['kode_penyakit'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Penyakit</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div class="modal-body">     
-                <form action="proses_edit_penyakit.php" method="post">
-                  <div class="form-group">
-                    <label for="text">Kode Penyakit:</label>
-                    <input type="text" name="kode" class="form-control" readonly value="<?php echo $row['kode_penyakit'] ?>">
-                  </div>
                     <div class="form-group">
-                      <label for="text">Nama Penyakit:</label>
-                      <input type="text" name="nama" class="form-control" value="<?php echo $row['nama_penyakit'] ?>">
+                      <label for="comment">Penanggulangan :</label>
+                      <textarea class="form-control" rows="5" id="comment" id="message" name="penanggulangan" readonly><?php echo $row['penanggulangan']?></textarea>
                     </div>
-                  <button class="btn btn-info" type="submit">Simpan</button>
+                    <button class="btn btn-info" type="submit">Ubah</button>
                   <button class="btn btn-danger" type="button" data-dismiss="modal" aria-label="Close">Batal</button>
                 </form>
             </div>
@@ -211,7 +198,7 @@
               Yakin ingin menghapus data <?php echo $row['nama_penyakit'] ?> ?
             </div>
             <div class="modal-footer">
-              <a href=hapus_penyakit.php?kode=<?php echo $row['kode_penyakit'] ?> class="btn btn-primary">Ya</a>
+              <a href=hapus_solusi.php?kode=<?php echo $row['kode_penyakit'] ?> class="btn btn-primary">Ya</a>
               <button class="btn btn-danger" type="button" data-dismiss="modal" aria-label="Close">Batal</button>
             </div>
           </div>
