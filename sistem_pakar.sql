@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2018 at 10:21 AM
+-- Generation Time: Jun 26, 2018 at 12:15 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -51,7 +51,7 @@ CREATE TABLE `gejala` (
 --
 
 INSERT INTO `gejala` (`kode_gejala`, `nama_gejala`) VALUES
-('G001', 'Sesak nafas'),
+('G001', 'Sesak Nafas'),
 ('G002', 'Diare'),
 ('G003', 'Bersin-bersin'),
 ('G004', 'Badan membiru'),
@@ -124,8 +124,14 @@ CREATE TABLE `penyakit` (
 --
 
 INSERT INTO `penyakit` (`kode_penyakit`, `nama_penyakit`) VALUES
-('P002', 'vsvcsvs2235'),
-('P004', 'bulu kusam');
+('P001', 'Infectious Bronchitis '),
+('P002', 'Avian Influenza'),
+('P003', 'Newcastle Disease'),
+('P004', 'Pulorun'),
+('P005', 'Ascites'),
+('P006', 'Fowl Pox'),
+('P007', 'Infectious Coryza'),
+('P008', 'Avian Ensefalomielitis');
 
 -- --------------------------------------------------------
 
@@ -139,6 +145,14 @@ CREATE TABLE `solusi` (
   `penyebab` text NOT NULL,
   `penanggulangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `solusi`
+--
+
+INSERT INTO `solusi` (`id_solusi`, `kode_penyakit`, `penyebab`, `penanggulangan`) VALUES
+(1, 'P001', 'Belum diketahui coy', 'ubah'),
+(2, 'P002', 'Avian influenza merupakan suatu penyakit viral pada unggas yang tersifat oleh adanya gangguan pernapasan, depresi, dan penurunan konsumsi pakan dan minum. Avian influenza  menyebabkan kematian yangs sangat tinggi pada unggas ', 'Belum diketahui');
 
 --
 -- Indexes for dumped tables
@@ -185,7 +199,7 @@ ALTER TABLE `solusi`
 -- AUTO_INCREMENT for table `basis_pengetahuan`
 --
 ALTER TABLE `basis_pengetahuan`
-  MODIFY `id_pengetahuan` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pengetahuan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pakar`
@@ -197,7 +211,7 @@ ALTER TABLE `pakar`
 -- AUTO_INCREMENT for table `solusi`
 --
 ALTER TABLE `solusi`
-  MODIFY `id_solusi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_solusi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
