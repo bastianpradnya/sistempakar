@@ -10,7 +10,7 @@
 	$dbname = "sistem_pakar";
 	$dbselect = mysqli_select_db($konek, $dbname);
 	if($dbselect == TRUE){
-		echo "<br>";
+		echo "";
 	}else{
 		echo "Koneksi Database Gagal <br>";
 	}
