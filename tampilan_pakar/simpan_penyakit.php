@@ -14,4 +14,3 @@
 	}
 	header("Location:penyakit.php");
 ?>
-<a href="penyakit.php"> OK </a>

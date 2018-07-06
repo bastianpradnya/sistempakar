@@ -1,7 +1,7 @@
 <?php
 	$kode_penyakit = $_POST['kode'];
-  $penyebab = $_POST['penyebab'];
-  $penanggulangan = $_POST['penanggulangan'];
+  	$penyebab = $_POST['penyebab'];
+ 	 $penanggulangan = $_POST['penanggulangan'];
 
   include "koneksi.php";
   
