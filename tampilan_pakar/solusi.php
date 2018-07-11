@@ -176,7 +176,7 @@
 
      <?php
         include "koneksi.php";
-        $sql = "select * from penyakit order by kode_penyakit";
+        $sql = "select * from penyakit group by kode_penyakit order by kode_penyakit";
         $hasil = mysqli_query($konek, $sql);
         if(!$hasil){
           die ("Gagal Query..".mysqli_error($konek));

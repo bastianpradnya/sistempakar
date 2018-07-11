@@ -1,18 +1,22 @@
 <?php 
-    include "../proses_login/session.php";
-?>
-
-<?php
-              $kode_penyakit = $_POST['kode'];
-              $nama_penyakit = $_POST['nama'];
-              $nama_gejala = $_POST['sel2'];
-  ?>
-
-<?php 
+  include "../proses_login/session.php";
   include "koneksi.php";
-  $sql3 = "select kode_gejala from gejala where nama_gejala='".$nama_gejala."'";
-  $nama2 = mysqli_query($konek, $sql3);
-  $tampil2 = mysqli_fetch_assoc($nama2); 
+
+  $id = $_GET['idpengetahuan'];
+
+  $sql = "select * from basis_pengetahuan where id_pengetahuan='".$id."'";
+  $hasil = mysqli_query($konek, $sql);
+  $tampil = mysqli_fetch_assoc($hasil); 
+
+  $sql2 = "select nama_penyakit from penyakit where kode_penyakit='".$tampil['kode_penyakit']."'";
+  $hasil2 = mysqli_query($konek, $sql2);
+  $tampil2 = mysqli_fetch_assoc($hasil2);
+
+  $sql3 = "select nama_gejala from gejala where kode_gejala='".$tampil['kode_gejala']."'";
+  $hasil3 = mysqli_query($konek, $sql3);
+  $tampil3 = mysqli_fetch_assoc($hasil3);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -36,29 +40,18 @@
 <body class="bg-dark">
   <div class="container">
     <div class="card card-login mx-auto mt-5">
-      <div class="card-header">Tambah Nilai</div>
+      <div class="card-header">Ubah Kaidah <?php echo $tampil2['nama_penyakit'];?></div>
       <div class="card-body">
-        <form action="simpan_kaidah.php" method="post">
-          <div class="form-group">
-            <label for="text">Kode Penyakit:</label>
-              <input type="text" name="kodep" class="form-control" readonly value="<?php echo $kode_penyakit ?>">
-          </div>
-          <div class="form-group">
-            <label for="text">Nama Penyakit:</label>
-              <input type="text" name="namap" class="form-control" readonly value="<?php echo $nama_penyakit ?>">
-          </div>
-          <div class="form-group">
-            <label for="text">Kode Gejala:</label>
-              <input type="text" name="kodeg" class="form-control" readonly value="<?php echo $tampil2['kode_gejala'] ?>">
-          </div>
+        <form action="proses_edit_kaidah.php" method="post">
           <div class="form-group">
             <label for="text">Nama Gejala:</label>
-              <input type="text" name="nama-gejala" class="form-control" readonly value="<?php echo $nama_gejala ?>">
+              <input type="text" name="gejala" class="form-control" readonly value="<?php echo $tampil3['nama_gejala']?>">
           </div>
           <div class="form-group">
             <label for="text">Nilai:</label>
-              <input type="text" name="nilai" class="form-control" value="">
+              <input type="text" name="nilai" class="form-control" value=<?php echo $tampil['nilai_belief']?>>
           </div>
+          <input type="hidden" value="<?php echo $id?>" name="id" />
           <button class="btn btn-info" type="submit">Simpan</button>
           <a href="kaidah.php" class="btn btn-danger" role="button">Batal</a>
         </form>

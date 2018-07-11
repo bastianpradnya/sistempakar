@@ -2,6 +2,10 @@
 	$kode_penyakit = $_POST['kodep'];
 	$kode_gejala = $_POST['kodeg'];
 	$nilai = $_POST['nilai'];
+
+	echo $kode_penyakit;
+	echo $kode_gejala;
+	echo $nilai;
 	 
 	include "koneksi.php";
 
