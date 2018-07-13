@@ -1,7 +1,9 @@
-<!DOCTYPE html>
 <?php 
     include "../proses_login/session.php";
 ?>
+
+<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
