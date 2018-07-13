@@ -14,4 +14,3 @@
 	}
 	header("Location:gejala.php");
 ?>
-<!-- <a href="gejala.php"> OK </a> -->

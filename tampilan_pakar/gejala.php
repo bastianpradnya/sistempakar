@@ -33,7 +33,7 @@
         </div>
       </div>
 
-      <!-- Example DataTables Card-->
+      <!-- Menampilkan Tabel Gejala-->
       <?php
 	      include "koneksi.php";
 	      $sql = "select * from gejala order by kode_gejala";
@@ -64,7 +64,8 @@
   			                 <td><?php echo $row['kode_gejala'] ?></td>
                          <td><?php echo $row['nama_gejala'] ?></td>
                          <td><button class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit<?php echo $row['kode_gejala'] ?>">Edit</button>&nbsp;&nbsp;
-                             <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus<?php echo $row['kode_gejala'] ?>">Hapus</button></td>
+                             <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus<?php echo $row['kode_gejala'] ?>">Hapus</button>
+                          </td>
                        </tr>
                 <?php } ?>
               </tbody>
@@ -105,7 +106,7 @@
           </div>
     </div>
 
-
+    <!-- Ubah Modal-->
       <?php
         include "koneksi.php";
         $sql = "select * from gejala order by kode_gejala";
@@ -116,7 +117,7 @@
       ?>
 
        <?php while ($row = mysqli_fetch_assoc($hasil)) { ?>
-        <!-- Ubah Modal-->
+        
         <div class="modal" id="edit<?php echo $row['kode_gejala'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -146,17 +147,17 @@
       </div>
       <?php } ?>
 
-     <?php
+<!-- Hapus Modal-->
+    <?php
         include "koneksi.php";
         $sql = "select * from gejala order by kode_gejala";
         $hasil = mysqli_query($konek, $sql);
         if(!$hasil){
           die ("Gagal Query..".mysqli_error($konek));
         }
-      ?>
+    ?>
 
-    <?php while ($row = mysqli_fetch_assoc($hasil)) { ?>
-      <!-- Hapus Modal-->
+    <?php while ($row = mysqli_fetch_assoc($hasil)) { ?>     
         <div class="modal" id="hapus<?php echo $row['kode_gejala'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">

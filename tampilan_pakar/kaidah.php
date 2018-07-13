@@ -53,7 +53,6 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>ID</th>
                   <th>Kode Penyakit</th>
                   <th>Nama Penyakit</th>
                   <th>Gejala</th>
@@ -62,8 +61,10 @@
               <tbody>
               <?php while ($row = mysqli_fetch_assoc($hasil)){ ?>
 			                 <tr>
-                        <td><?php echo $row['id_pengetahuan'] ?></td>
-  			                 <td><?php echo $row['kode_penyakit'] ?></td>
+  			                 <td>
+                         <input type="hidden" value="<?php echo $row['id_pengetahuan']?>" name="id" />
+                          <?php echo $row['kode_penyakit'] ?>
+                         </td>
                          <td>
                           <?php 
                             include "koneksi.php";
@@ -164,7 +165,6 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                        <th>ID</th>
                         <th>Nama Gejala</th>
                         <th>Nilai</th>
                         <th>Operasi</th>
@@ -173,8 +173,8 @@
                       <tbody>
                         <?php while ($row2 = mysqli_fetch_assoc($hasil2)){ ?>
                           <tr>
-                            <td><?php echo $row2['id_pengetahuan'] ?></td>
                             <td>
+                            <input type="hidden" value="<?php echo $row2['id_pengetahuan']?>" name="id" />
                               <?php 
                                 include "koneksi.php";
                                 $sql2 = "select nama_gejala from gejala where kode_gejala='".$row2['kode_gejala']."'";
@@ -193,6 +193,17 @@
                     </tbody>
                   </table>
                 </div>
+              </form>
+              <form action="tambah_kaidah.php" method="post">
+              <?php 
+                      include "koneksi.php";
+                      $sql2 = "select nama_penyakit from penyakit where kode_penyakit='".$row['kode_penyakit']."'";
+                      $nama = mysqli_query($konek, $sql2);
+                      $tampil = mysqli_fetch_assoc($nama);
+                  ?>
+              <input type="hidden" value="<?php echo $tampil['nama_penyakit']?>" name="sel1" />
+              <button class="btn btn-primary" type="submit">Tambah</button>
+              <button class="btn btn-danger" type="button" data-dismiss="modal" aria-label="Close">Kembali</button>
               </form>
             </div>
           </div>

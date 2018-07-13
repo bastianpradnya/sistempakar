@@ -37,10 +37,7 @@
       <div class="card-header">Tambah Kaidah Penyakit</div>
       <div class="card-body">
         <form action="tambah_nilai.php" method="post">
-          <div class="form-group">
-            <label for="text">Kode Penyakit:</label>
-              <input type="text" name="kode" class="form-control" readonly value="<?php echo $tampil2['kode_penyakit'] ?>">
-          </div>
+          <input type="hidden" value="<?php echo $tampil2['kode_penyakit']?>" name="kode" />
           <div class="form-group">
             <label for="text">Nama Penyakit:</label>
               <input type="text" name="nama" class="form-control" readonly value="<?php echo $nama_penyakit ?>">
@@ -51,7 +48,7 @@
                   $sql3 = "select * from gejala order by kode_gejala";
                   $nama2 = mysqli_query($konek, $sql3);
                 ?>
-                  <label for="sel1">Pilih Penyakit:</label>
+                  <label for="sel1">Pilih Gejala:</label>
                     <select class="form-control" name="sel2">
                     <?php while ($row3 = mysqli_fetch_assoc($nama2)){ ?>
                       <option><?php echo $row3['nama_gejala']?></option>

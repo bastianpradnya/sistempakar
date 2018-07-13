@@ -39,17 +39,11 @@
       <div class="card-header">Tambah Nilai</div>
       <div class="card-body">
         <form action="simpan_kaidah.php" method="post">
-          <div class="form-group">
-            <label for="text">Kode Penyakit:</label>
-              <input type="text" name="kodep" class="form-control" readonly value="<?php echo $kode_penyakit ?>">
-          </div>
+          <input type="hidden" value="<?php echo $kode_penyakit?>" name="kodep" />
+          <input type="hidden" value="<?php echo $tampil2['kode_gejala']?>" name="kodeg" />
           <div class="form-group">
             <label for="text">Nama Penyakit:</label>
               <input type="text" name="namap" class="form-control" readonly value="<?php echo $nama_penyakit ?>">
-          </div>
-          <div class="form-group">
-            <label for="text">Kode Gejala:</label>
-              <input type="text" name="kodeg" class="form-control" readonly value="<?php echo $tampil2['kode_gejala'] ?>">
           </div>
           <div class="form-group">
             <label for="text">Nama Gejala:</label>

@@ -1,26 +1,28 @@
 <?php 
-    include "../proses_login/session.php";
-?>
+  include "../proses_login/session.php";
+  include "koneksi.php";
 
-<?php
 	$solusi_kd_penyakit = $_POST['kode'];
-	include "koneksi.php";
-	$sql = "select * from solusi WHERE kode_penyakit='".$solusi_kd_penyakit."'";
-	$result = mysqli_query($konek, $sql );
 
-	while($row = mysqli_fetch_array($result))
-{
-	$kode_penyakit = $row['kode_penyakit'];
-	$penyebab = $row['penyebab'];
-	$penanggulangan = $row['penanggulangan'];
-}
+	// Query pada tabel gejala
+	$sql_s = "select * from solusi WHERE kode_penyakit='".$solusi_kd_penyakit."'";
+  $tampil_s = mysqli_query($konek, $sql_s );
+  
+  // Perulangan untuk menampilkan data tabel solusi
+	while($row_s = mysqli_fetch_array($tampil_s)){
+    $kode_penyakit = $row_s['kode_penyakit'];
+    $penyebab = $row_s['penyebab'];
+    $penanggulangan = $row_s['penanggulangan'];
+  }
+
+  // Query pada tabel penyakit
+  $sql_p = "select nama_penyakit from penyakit where kode_penyakit='".$kode_penyakit."'";
+  $hasil_p = mysqli_query($konek, $sql_p);
+  $tampil_p = mysqli_fetch_assoc($hasil_p);
 ?>
-
-
-
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -40,21 +42,21 @@
 <body class="bg-dark">
   <div class="container">
     <div class="card card-login mx-auto mt-5">
-      <div class="card-header">Ubah Informasi Penyakit</div>
+      <div class="card-header">Ubah Detail Penyakit <?php echo $tampil_p['nama_penyakit'];?></div>
       <div class="card-body">
         <form action="proses_edit_solusi.php" method="post">
           <div class="form-group">
             <label for="text">Kode Penyakit:</label>
-              <input type="text" name="kode" class="form-control" readonly value="<?php echo $kode_penyakit ?>">
+            <input type="text" name="kode" class="form-control" readonly value="<?php echo $kode_penyakit ?>">
           </div>
           <div class="form-group">
-                      <label for="comment">Penyebab :</label>
-                      <textarea class="form-control" rows="5" id="comment" id="message" name="penyebab"><?php echo $penyebab?></textarea>
-                    </div>
+            <label for="comment">Penyebab :</label>
+            <textarea class="form-control" rows="5" id="comment" id="message" name="penyebab"><?php echo $penyebab?></textarea>
+            </div>
 					<div class="form-group">
-                      <label for="comment">Penanggulangan :</label>
-                      <textarea class="form-control" rows="5" id="comment" id="message" name="penanggulangan"><?php echo $penanggulangan?></textarea>
-                    </div>
+            <label for="comment">Penanggulangan :</label>
+            <textarea class="form-control" rows="5" id="comment" id="message" name="penanggulangan"><?php echo $penanggulangan?></textarea>
+          </div>
           <button class="btn btn-info" type="submit">Simpan</button>
           <a href="solusi.php" class="btn btn-danger" role="button">Batal</a>
         </form>

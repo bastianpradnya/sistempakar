@@ -31,7 +31,7 @@
         <form action="login_process.php" method="post">
           <div class="form-group">
             <label for="exampleInputEmail1">Nama Pengguna</label>
-            <input class="form-control" id="exampleInputEmail1" name="username" type="text" aria-describedby="emailHelp" placeholder="Enter email">
+            <input class="form-control" id="exampleInputEmail1" name="username" type="text" aria-describedby="emailHelp" placeholder="Username">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Kata Sandi</label>

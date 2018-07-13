@@ -34,7 +34,7 @@
 <body class="bg-dark">
   <div class="container">
     <div class="card card-login mx-auto mt-5">
-      <div class="card-header">Tambah Informasi Penyakit</div>
+      <div class="card-header">Tambah Solusi Penyakit</div>
       <div class="card-body">
         <form action="simpan_solusi.php" method="post">
           <div class="form-group">

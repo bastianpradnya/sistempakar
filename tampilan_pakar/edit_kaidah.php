@@ -4,23 +4,24 @@
 
   $id = $_GET['idpengetahuan'];
 
-  $sql = "select * from basis_pengetahuan where id_pengetahuan='".$id."'";
-  $hasil = mysqli_query($konek, $sql);
-  $tampil = mysqli_fetch_assoc($hasil); 
+  // Query pada tabel basis_pengetahuan
+  $sql_bp = "select * from basis_pengetahuan where id_pengetahuan='".$id."'";
+  $hasil_bp = mysqli_query($konek, $sql_bp);
+  $tampil_bp = mysqli_fetch_assoc($hasil_bp); 
 
-  $sql2 = "select nama_penyakit from penyakit where kode_penyakit='".$tampil['kode_penyakit']."'";
-  $hasil2 = mysqli_query($konek, $sql2);
-  $tampil2 = mysqli_fetch_assoc($hasil2);
+  // Query pada tabel penyakit
+  $sql_p = "select nama_penyakit from penyakit where kode_penyakit='".$tampil_bp['kode_penyakit']."'";
+  $hasil_p = mysqli_query($konek, $sql_p);
+  $tampil_p = mysqli_fetch_assoc($hasil_p);
 
-  $sql3 = "select nama_gejala from gejala where kode_gejala='".$tampil['kode_gejala']."'";
-  $hasil3 = mysqli_query($konek, $sql3);
-  $tampil3 = mysqli_fetch_assoc($hasil3);
-
-
+  // Query pada tabel gejala
+  $sql_g = "select nama_gejala from gejala where kode_gejala='".$tampil_bp['kode_gejala']."'";
+  $hasil_g = mysqli_query($konek, $sql_g);
+  $tampil_g = mysqli_fetch_assoc($hasil_g);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -40,18 +41,18 @@
 <body class="bg-dark">
   <div class="container">
     <div class="card card-login mx-auto mt-5">
-      <div class="card-header">Ubah Kaidah <?php echo $tampil2['nama_penyakit'];?></div>
+      <div class="card-header">Ubah Kaidah <?php echo $tampil_p['nama_penyakit'];?></div>
       <div class="card-body">
         <form action="proses_edit_kaidah.php" method="post">
+          <input type="hidden" value="<?php echo $id?>" name="id" />
           <div class="form-group">
             <label for="text">Nama Gejala:</label>
-              <input type="text" name="gejala" class="form-control" readonly value="<?php echo $tampil3['nama_gejala']?>">
+            <input type="text" name="gejala" class="form-control" readonly value="<?php echo $tampil_g['nama_gejala']?>">
           </div>
           <div class="form-group">
             <label for="text">Nilai:</label>
-              <input type="text" name="nilai" class="form-control" value=<?php echo $tampil['nilai_belief']?>>
+            <input type="text" name="nilai" class="form-control" value=<?php echo $tampil_bp['nilai_belief']?>>
           </div>
-          <input type="hidden" value="<?php echo $id?>" name="id" />
           <button class="btn btn-info" type="submit">Simpan</button>
           <a href="kaidah.php" class="btn btn-danger" role="button">Batal</a>
         </form>

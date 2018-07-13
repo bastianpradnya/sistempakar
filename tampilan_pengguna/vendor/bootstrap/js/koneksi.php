@@ -1,13 +1,13 @@
 <?php
-	$host     = "localhost";
-	$username = "root";
-	$password = "";
+	$host     = "https://databases.000webhost.com";
+	$username = "id6479230_satria";
+	$password = "satria";
 
 	$konek = new mysqli($host, $username, $password);
 	if ($konek->connect_error) {
 	    die("Koneksi Database Gagal: ");
 	}
-	$dbname = "sistem_pakar";
+	$dbname = "id6479230_sistem_pakar";
 	$dbselect = mysqli_select_db($konek, $dbname);
 	if($dbselect == TRUE){
 		echo "Koneksi Database Berhasil <br>";

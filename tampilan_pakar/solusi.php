@@ -93,7 +93,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Informasi Penyakit</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Solusi Penyakit</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
@@ -195,7 +195,7 @@
                 </button>
               </div>
               <div class="modal-body">
-              Yakin ingin menghapus data <?php echo $row['nama_penyakit'] ?> ?
+              Yakin ingin menghapus solusi <?php echo $row['nama_penyakit'] ?> ?
             </div>
             <div class="modal-footer">
               <a href=hapus_solusi.php?kode=<?php echo $row['kode_penyakit'] ?> class="btn btn-primary">Ya</a>

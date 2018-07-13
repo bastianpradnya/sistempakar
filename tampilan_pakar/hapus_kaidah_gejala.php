@@ -47,15 +47,16 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                        <th>ID</th>
                         <th>Nama Gejala</th>
                         <th>Nilai</th>
                       </tr>
                     </thead>
                       <tbody>
                           <tr>
-                            <td><?php echo $tampil['id_pengetahuan'] ?></td>
-                            <td><?php echo $tampil3['nama_gejala'] ?></td>
+                            <td>
+                            <input type="hidden" value="<?php echo $tampil['id_pengetahuan']?>" name="id" />
+                            <?php echo $tampil3['nama_gejala'] ?>
+                            </td>
                             <td><?php echo $tampil['nilai_belief'] ?></td>
                           </tr>
                     </tbody>
