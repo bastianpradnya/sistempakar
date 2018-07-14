@@ -9,7 +9,7 @@
   <?php 
     include "head.php";
   ?>
-  
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -50,7 +50,7 @@
           </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="dataTable">
               <thead>
                 <tr>
                   <th>Kode</th>
@@ -189,6 +189,17 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $('#dataTables').DataTable();
+      } );
+    </script>
+
   </div>
 </body>
 
