@@ -22,7 +22,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Tambah Info Penyakit</title>
+  <title>Tambah Kaidah Penyakit</title>
   <!-- Bootstrap core CSS-->
   <link href="../tampilan_pakar/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -34,27 +34,29 @@
 <body class="bg-dark">
   <div class="container">
     <div class="card card-login mx-auto mt-5">
-      <div class="card-header">Tambah Solusi Penyakit</div>
+      <div class="card-header">Tambah Kaidah Penyakit</div>
       <div class="card-body">
-        <form action="simpan_solusi.php" method="post">
-          <div class="form-group">
-            <label for="text">Kode Penyakit:</label>
-              <input type="text" name="kode" class="form-control" readonly value="<?php echo $tampil2['kode_penyakit'] ?>">
-          </div>
+        <form action="tambah_nilai.php" method="post">
+          <input type="hidden" value="<?php echo $tampil2['kode_penyakit']?>" name="kode" />
           <div class="form-group">
             <label for="text">Nama Penyakit:</label>
               <input type="text" name="nama" class="form-control" readonly value="<?php echo $nama_penyakit ?>">
           </div>
           <div class="form-group">
-          <label for="comment">Penyebab :</label>
-            <textarea class="form-control" rows="5" id="comment" name="penyebab"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="comment">Penanggulangan :</label>
-              <textarea class="form-control" rows="5" id="comment" name="penanggulangan"></textarea>
-             </div>
-          <button class="btn btn-info" type="submit">Simpan</button>
-          <a href="solusi.php" class="btn btn-danger" role="button">Batal</a>
+                <?php
+                  include "koneksi.php";
+                  $sql3 = "select * from gejala order by kode_gejala";
+                  $nama2 = mysqli_query($konek, $sql3);
+                ?>
+                  <label for="sel1">Pilih Gejala:</label>
+                    <select class="form-control" name="sel2">
+                    <?php while ($row3 = mysqli_fetch_assoc($nama2)){ ?>
+                      <option><?php echo $row3['nama_gejala']?></option>
+                      <?php } ?>
+                    </select>
+            </div>
+          <button class="btn btn-info" type="submit">Lanjut</button>
+          <a href="kaidah.php" class="btn btn-danger" role="button">Batal</a>
         </form>
       </div>
     </div>

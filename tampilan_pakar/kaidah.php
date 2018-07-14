@@ -1,7 +1,9 @@
-<!DOCTYPE html>
 <?php 
     include "../proses_login/session.php";
 ?>
+
+<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -53,7 +55,6 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>ID</th>
                   <th>Kode Penyakit</th>
                   <th>Nama Penyakit</th>
                   <th>Gejala</th>
@@ -62,8 +63,10 @@
               <tbody>
               <?php while ($row = mysqli_fetch_assoc($hasil)){ ?>
 			                 <tr>
-                        <td><?php echo $row['id_pengetahuan'] ?></td>
-  			                 <td><?php echo $row['kode_penyakit'] ?></td>
+  			                 <td>
+                         <input type="hidden" value="<?php echo $row['id_pengetahuan']?>" name="id" />
+                          <?php echo $row['kode_penyakit'] ?>
+                         </td>
                          <td>
                           <?php 
                             include "koneksi.php";
@@ -93,13 +96,13 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Informasi Penyakit</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Kaidah Penyakit</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
               <div class="modal-body">     
-              <form action="tambah_solusi.php" method="post">
+              <form action="tambah_kaidah.php" method="post">
                 <div class="form-group">
                 <?php
                   include "koneksi.php";
@@ -152,9 +155,9 @@
               </div>
               <?php
                 include "koneksi.php";
-                $sql = "select * from basis_pengetahuan";
-                $hasil = mysqli_query($konek, $sql);
-                if(!$hasil){
+                $sql = "select * from basis_pengetahuan where kode_penyakit='".$row['kode_penyakit']."'";
+                $hasil2 = mysqli_query($konek, $sql);
+                if(!$hasil2){
                   die ("Gagal Query..".mysqli_error($konek));
                 }
               ?>
@@ -164,35 +167,45 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                        <th>ID</th>
                         <th>Nama Gejala</th>
                         <th>Nilai</th>
                         <th>Operasi</th>
                       </tr>
                       </thead>
                       <tbody>
-                        <?php while ($row = mysqli_fetch_assoc($hasil)){ ?>
+                        <?php while ($row2 = mysqli_fetch_assoc($hasil2)){ ?>
                           <tr>
-                            <td><?php echo $row['id_pengetahuan'] ?></td>
                             <td>
+                            <input type="hidden" value="<?php echo $row2['id_pengetahuan']?>" name="id" />
                               <?php 
                                 include "koneksi.php";
-                                $sql2 = "select nama_gejala from gejala where kode_gejala='".$row['kode_gejala']."'";
+                                $sql2 = "select nama_gejala from gejala where kode_gejala='".$row2['kode_gejala']."'";
                                 $nama = mysqli_query($konek, $sql2);
                                 $tampil = mysqli_fetch_assoc($nama);
                                 echo $tampil['nama_gejala'];
                               ?>
                             </td>
-                            <td><?php echo $row['nilai_belief'] ?></td>
+                            <td><?php echo $row2['nilai_belief'] ?></td>
                             <td>
-                              <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#<?php echo $row['kode_penyakit'] ?>">Ubah</button>&nbsp;&nbsp;
-                              <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#<?php echo $row['kode_penyakit'] ?>">Hapus</button>
+                              <a href=edit_kaidah.php?idpengetahuan=<?php echo $row2['id_pengetahuan'] ?> class="btn btn-info btn-sm">Ubah</a>&nbsp;&nbsp;
+                              <a href=hapus_kaidah_gejala.php?idpengetahuan=<?php echo $row2['id_pengetahuan'] ?> class="btn btn-danger btn-sm">Hapus</a>
                             </td>
                           </tr>
                         <?php } ?>
                     </tbody>
                   </table>
                 </div>
+              </form>
+              <form action="tambah_kaidah.php" method="post">
+              <?php 
+                      include "koneksi.php";
+                      $sql2 = "select nama_penyakit from penyakit where kode_penyakit='".$row['kode_penyakit']."'";
+                      $nama = mysqli_query($konek, $sql2);
+                      $tampil = mysqli_fetch_assoc($nama);
+                  ?>
+              <input type="hidden" value="<?php echo $tampil['nama_penyakit']?>" name="sel1" />
+              <button class="btn btn-primary" type="submit">Tambah</button>
+              <button class="btn btn-danger" type="button" data-dismiss="modal" aria-label="Close">Kembali</button>
               </form>
             </div>
           </div>
@@ -222,17 +235,16 @@
                 </button>
               </div>
               <div class="modal-body">
-              Yakin ingin menghapus data <?php echo $row['nama_penyakit'] ?> ?
+              Yakin ingin menghapus kaidah penyakit <?php echo $row['nama_penyakit'] ?> ?
             </div>
             <div class="modal-footer">
-              <a href=hapus_solusi.php?kode=<?php echo $row['kode_penyakit'] ?> class="btn btn-primary">Ya</a>
+              <a href=hapus_kaidah.php?kode=<?php echo $row['kode_penyakit'] ?> class="btn btn-primary">Ya</a>
               <button class="btn btn-danger" type="button" data-dismiss="modal" aria-label="Close">Batal</button>
             </div>
           </div>
           </div>
         </div>
     <?php } ?>
-
 
    <?php 
       include "footer.php";

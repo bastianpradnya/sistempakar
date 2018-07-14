@@ -1,8 +1,6 @@
 <?php
 // include database connection file
 include "koneksi.php";
- 
-// Check if form is submitted for user update, then redirect to homepage after update
 	
 	$kode_penyakit=$_POST['kode'];
 	$penyebab=$_POST['penyebab'];
