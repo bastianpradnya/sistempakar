@@ -52,7 +52,7 @@
           </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable">
+            <table class="table table-bordered" id="dataTables">
               <thead>
                 <tr>
                   <th>Kode</th>
@@ -185,6 +185,11 @@
    <?php 
       include "footer.php";
     ?>
+
+
+
+  </div>
+</body>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -202,8 +207,5 @@
           $('#dataTables').DataTable();
       } );
     </script>
-
-  </div>
-</body>
 
 </html>

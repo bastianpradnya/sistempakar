@@ -2,11 +2,9 @@
  
 $data=array(
 
-	array('P002',0.8),
-	array('P007,P016',0.8),
-	array('P007,P016',0.8),
-	array('P007,P012,P016',0.8),
-	array('P016',0.4)
+	array('FC,FT',0.8),
+	array('FC,ND,FT',0.9),
+
 	
 	);
 
