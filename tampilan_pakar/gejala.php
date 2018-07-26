@@ -1,24 +1,6 @@
 <?php 
-    include "../proses_login/session.php";
-?>
-
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-
-  <?php 
     include "head.php";
-  ?>
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-</head>
-
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
- 
-  <?php 
-    include "navigation.php";
-  ?>
+?>
 
   <div class="content-wrapper">
     <div class="container-fluid">
@@ -37,7 +19,7 @@
 
       <!-- Menampilkan Tabel Gejala-->
       <?php
-	      include "koneksi.php";
+	      include "../proses_login/koneksi.php";
 	      $sql = "select * from gejala order by kode_gejala";
 	      $hasil = mysqli_query($konek, $sql);
 	      if(!$hasil){
@@ -52,7 +34,7 @@
           </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered" id="dataTables">
+            <table class="table table-bordered" id="dataTable">
               <thead>
                 <tr>
                   <th>Kode</th>
@@ -110,7 +92,7 @@
 
     <!-- Ubah Modal-->
       <?php
-        include "koneksi.php";
+        include "../proses_login/koneksi.php";
         $sql = "select * from gejala order by kode_gejala";
         $hasil = mysqli_query($konek, $sql);
         if(!$hasil){
@@ -151,7 +133,7 @@
 
 <!-- Hapus Modal-->
     <?php
-        include "koneksi.php";
+        include "../proses_login/koneksi.php";
         $sql = "select * from gejala order by kode_gejala";
         $hasil = mysqli_query($konek, $sql);
         if(!$hasil){
@@ -180,32 +162,8 @@
           </div>
         </div>
     <?php } ?>
-
+  </div>
 
    <?php 
       include "footer.php";
     ?>
-
-
-
-  </div>
-</body>
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-
-
-    <script type="text/javascript">
-      $(document).ready(function() {
-          $('#dataTables').DataTable();
-      } );
-    </script>
-
-</html>

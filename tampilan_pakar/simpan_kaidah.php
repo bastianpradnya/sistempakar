@@ -7,7 +7,7 @@
 	echo $kode_gejala;
 	echo $nilai;
 	 
-	include "koneksi.php";
+	include "../proses_login/koneksi.php";
 
 	$sql = "INSERT INTO basis_pengetahuan (id_pengetahuan, kode_penyakit, kode_gejala, nilai_belief) 
 			VALUES (NULL,'$kode_penyakit','$kode_gejala','$nilai')";

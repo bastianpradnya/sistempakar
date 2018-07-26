@@ -3,7 +3,7 @@
   	$penyebab = $_POST['penyebab'];
  	 $penanggulangan = $_POST['penanggulangan'];
 
-  include "koneksi.php";
+  include "../proses_login/koneksi.php";
   
 	$sql = "insert into solusi(kode_penyakit, penyebab, penanggulangan)
           values('$kode_penyakit','$penyebab','$penanggulangan')" ;

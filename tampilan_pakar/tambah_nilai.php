@@ -9,7 +9,7 @@
   ?>
 
 <?php 
-  include "koneksi.php";
+  include "../proses_login/koneksi.php";
   $sql3 = "select kode_gejala from gejala where nama_gejala='".$nama_gejala."'";
   $nama2 = mysqli_query($konek, $sql3);
   $tampil2 = mysqli_fetch_assoc($nama2); 

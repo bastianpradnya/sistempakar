@@ -1,6 +1,6 @@
 <?php
 // include database connection file
-include "koneksi.php";
+include "../proses_login/koneksi.php";
 
  // Get id from URL to delete that user
 $id = $_GET['idpengetahuan'];

@@ -1,6 +1,6 @@
 <?php 
   include "../proses_login/session.php";
-  include "koneksi.php";
+  include "../proses_login/koneksi.php";
 
 	$solusi_kd_penyakit = $_POST['kode'];
 

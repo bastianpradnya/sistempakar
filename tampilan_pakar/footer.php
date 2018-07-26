@@ -28,3 +28,24 @@
 <a class="scroll-to-top rounded" href="#page-top">
 <i class="fa fa-angle-up"></i>
 </a>
+
+</body>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $('#dataTable').DataTable();
+      } );
+    </script>
+
+</html>

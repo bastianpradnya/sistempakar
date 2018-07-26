@@ -5,13 +5,11 @@
 
 	$konek = new mysqli($host, $username, $password);
 	if ($konek->connect_error) {
-	    die("Koneksi Database Gagal: ");
+	    die("Koneksi Server Gagal: ");
 	}
 	$dbname = "sistem_pakar";
 	$dbselect = mysqli_select_db($konek, $dbname);
-	if($dbselect == TRUE){
-		echo "Koneksi Database Berhasil <br>";
-	}else{
+	if($dbselect == False){
 		echo "Koneksi Database Gagal <br>";
 	}
 ?>

@@ -1,24 +1,7 @@
-<?php 
-    include "../proses_login/session.php";
-?>
-
-<!DOCTYPE html>
-<html>
-
-<head>
-
   <?php 
     include "head.php";
   ?>
   
-</head>
-
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
- 
-  <?php 
-    include "navigation.php";
-  ?>
-
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -39,14 +22,3 @@
     <?php 
       include "footer.php";
     ?>
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
-  </div>
-</body>
-
-</html>

@@ -1,24 +1,8 @@
-<?php 
-    include "../proses_login/session.php";
-?>
-
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-
   <?php 
     include "head.php";
   ?>
   
 </head>
-
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
- 
-  <?php 
-    include "navigation.php";
-  ?>
 
   <div class="content-wrapper">
     <div class="container-fluid">
@@ -37,7 +21,7 @@
 
       <!-- Example DataTables Card-->
       <?php
-	      include "koneksi.php";
+	      include "../proses_login/koneksi.php";
 	      $sql = "select * from solusi order by kode_penyakit";
 	      $hasil = mysqli_query($konek, $sql);
 	      if(!$hasil){
@@ -68,7 +52,7 @@
   			                 <td><?php echo $row['kode_penyakit'] ?></td>
                          <td>
                           <?php 
-                            include "koneksi.php";
+                            include "../proses_login/koneksi.php";
                             $sql2 = "select nama_penyakit from penyakit where kode_penyakit='".$row['kode_penyakit']."'";
                             $nama = mysqli_query($konek, $sql2);
                             $tampil = mysqli_fetch_assoc($nama);
@@ -104,7 +88,7 @@
               <form action="tambah_solusi.php" method="post">
                 <div class="form-group">
                 <?php
-                  include "koneksi.php";
+                  include "../proses_login/koneksi.php";
                   $sql3 = "select * from penyakit order by kode_penyakit";
                   $nama2 = mysqli_query($konek, $sql3);
                 ?>
@@ -125,7 +109,7 @@
     </div>
 
       <?php
-        include "koneksi.php";
+        include "../proses_login/koneksi.php";
         $sql = "select * from solusi order by kode_penyakit";
         $hasil = mysqli_query($konek, $sql);
         if(!$hasil){
@@ -141,7 +125,7 @@
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Detail Penyakit  
                   <?php 
-                      include "koneksi.php";
+                      include "../proses_login/koneksi.php";
                       $sql2 = "select nama_penyakit from penyakit where kode_penyakit='".$row['kode_penyakit']."'";
                       $nama = mysqli_query($konek, $sql2);
                       $tampil = mysqli_fetch_assoc($nama);
@@ -177,7 +161,7 @@
       <?php } ?>
 
      <?php
-        include "koneksi.php";
+        include "../proses_login/koneksi.php";
         $sql = "select * from penyakit group by kode_penyakit order by kode_penyakit";
         $hasil = mysqli_query($konek, $sql);
         if(!$hasil){
@@ -212,14 +196,3 @@
    <?php 
       include "footer.php";
     ?>
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
-  </div>
-</body>
-
-</html>

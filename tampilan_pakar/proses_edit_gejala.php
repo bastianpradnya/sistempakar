@@ -1,6 +1,6 @@
 <?php
 // include database connection file
-include "koneksi.php";
+include "../proses_login/koneksi.php";
  	
 	$kode_gejala=$_POST['kode'];
 	$nama_gejala=$_POST['nama'];

@@ -1,7 +1,7 @@
 <?php
 	$kode_gejala = $_POST['kode_gejala'];
 	$nama_gejala = $_POST['nama_gejala'];
-	include "koneksi.php";
+	include "../proses_login/koneksi.php";
 	$sql = "insert into gejala(kode_gejala, nama_gejala)
 			values('$kode_gejala','$nama_gejala')" ;
 	$hasil = mysqli_query($konek, $sql);

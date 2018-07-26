@@ -7,7 +7,7 @@
 ?>
 
 <?php 
-  include "koneksi.php";
+  include "../proses_login/koneksi.php";
   $sql3 = "select kode_penyakit from penyakit where nama_penyakit='".$nama_penyakit."'";
   $nama2 = mysqli_query($konek, $sql3);
   $tampil2 = mysqli_fetch_assoc($nama2); 

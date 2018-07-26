@@ -1,6 +1,6 @@
 <?php
 // include database connection file
-include "koneksi.php";
+include "../proses_login/koneksi.php";
  
 // Check if form is submitted for user update, then redirect to homepage after update
 	
