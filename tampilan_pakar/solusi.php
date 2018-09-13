@@ -1,5 +1,5 @@
   <?php 
-    include "head.php";
+    include "view/head.php";
   ?>
   
 </head>
@@ -85,7 +85,7 @@
                 </button>
               </div>
               <div class="modal-body">     
-              <form action="tambah_solusi.php" method="post">
+              <form action="process/add/tambah_solusi.php" method="post">
                 <div class="form-group">
                 <?php
                   include "../proses_login/koneksi.php";
@@ -137,7 +137,7 @@
                 </button>
               </div>
               <div class="modal-body">     
-                <form action="edit_solusi.php" method="post">
+                <form action="process/update/edit_solusi.php" method="post">
                   <div class="form-group">
                     <label for="text">Kode Penyakit:</label>
                     <input type="text" name="kode" class="form-control" readonly value="<?php echo $row['kode_penyakit'] ?>">
@@ -184,7 +184,7 @@
               Yakin ingin menghapus solusi <?php echo $row['nama_penyakit'] ?> ?
             </div>
             <div class="modal-footer">
-              <a href=hapus_solusi.php?kode=<?php echo $row['kode_penyakit'] ?> class="btn btn-primary">Ya</a>
+              <a href=process/delete/hapus_solusi.php?kode=<?php echo $row['kode_penyakit'] ?> class="btn btn-primary">Ya</a>
               <button class="btn btn-danger" type="button" data-dismiss="modal" aria-label="Close">Batal</button>
             </div>
           </div>
@@ -194,5 +194,5 @@
 
 
    <?php 
-      include "footer.php";
+      include "view/footer.php";
     ?>

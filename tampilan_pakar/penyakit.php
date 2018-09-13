@@ -1,5 +1,5 @@
   <?php 
-    include "head.php";
+    include "view/head.php";
   ?>
 
   <div class="content-wrapper">
@@ -71,7 +71,7 @@
                 </button>
               </div>
               <div class="modal-body">     
-                <form action="simpan_penyakit.php" method="post">
+                <form action="process/save/simpan_penyakit.php" method="post">
                   <div class="form-group">
                     <label for="text">Kode Penyakit:</label>
                     <input type="text" class="form-control" name="kode_penyakit">
@@ -111,7 +111,7 @@
                 </button>
               </div>
               <div class="modal-body">     
-                <form action="proses_edit_penyakit.php" method="post">
+                <form action="process/update/proses_edit_penyakit.php" method="post">
                   <div class="form-group">
                     <label for="text">Kode Penyakit:</label>
                     <input type="text" name="kode" class="form-control" readonly value="<?php echo $row['kode_penyakit'] ?>">
@@ -154,7 +154,7 @@
               Yakin ingin menghapus data <?php echo $row['nama_penyakit'] ?> ?
             </div>
             <div class="modal-footer">
-              <a href=hapus_penyakit.php?kode=<?php echo $row['kode_penyakit'] ?> class="btn btn-primary">Ya</a>
+              <a href=process/delete/hapus_penyakit.php?kode=<?php echo $row['kode_penyakit'] ?> class="btn btn-primary">Ya</a>
               <button class="btn btn-danger" type="button" data-dismiss="modal" aria-label="Close">Batal</button>
             </div>
           </div>
@@ -164,5 +164,5 @@
 
 
    <?php 
-      include "footer.php";
+      include "view/footer.php";
     ?>

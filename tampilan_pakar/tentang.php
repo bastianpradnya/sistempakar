@@ -1,5 +1,5 @@
   <?php 
-    include "head.php";
+    include "view/head.php";
   ?>
 
   <div class="content-wrapper">
@@ -20,5 +20,5 @@
     </div>
     <!-- /.container-fluid-->
     <?php 
-      include "footer.php";
+      include "view/footer.php";
     ?>

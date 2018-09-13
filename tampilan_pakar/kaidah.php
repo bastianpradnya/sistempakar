@@ -1,5 +1,5 @@
   <?php 
-    include "head.php";
+    include "view/head.php";
   ?>
   
   <div class="content-wrapper">
@@ -84,7 +84,7 @@
                 </button>
               </div>
               <div class="modal-body">     
-              <form action="tambah_kaidah.php" method="post">
+              <form action="process/add/tambah_kaidah.php" method="post">
                 <div class="form-group">
                 <?php
                   include "../proses_login/koneksi.php";
@@ -144,7 +144,7 @@
                 }
               ?>
               <div class="modal-body">     
-                <form action="edit_kaidah.php" method="post">
+                <form action="process/update/edit_kaidah.php" method="post">
                   <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
@@ -169,8 +169,8 @@
                             </td>
                             <td><?php echo $row2['nilai_belief'] ?></td>
                             <td>
-                              <a href=edit_kaidah.php?idpengetahuan=<?php echo $row2['id_pengetahuan'] ?> class="btn btn-info btn-sm">Ubah</a>&nbsp;&nbsp;
-                              <a href=hapus_kaidah_gejala.php?idpengetahuan=<?php echo $row2['id_pengetahuan'] ?> class="btn btn-danger btn-sm">Hapus</a>
+                              <a href=process/update/edit_kaidah.php?idpengetahuan=<?php echo $row2['id_pengetahuan'] ?> class="btn btn-info btn-sm">Ubah</a>&nbsp;&nbsp;
+                              <a href=process/delete/hapus_kaidah_gejala.php?idpengetahuan=<?php echo $row2['id_pengetahuan'] ?> class="btn btn-danger btn-sm">Hapus</a>
                             </td>
                           </tr>
                         <?php } ?>
@@ -220,7 +220,7 @@
               Yakin ingin menghapus kaidah penyakit <?php echo $row['nama_penyakit'] ?> ?
             </div>
             <div class="modal-footer">
-              <a href=hapus_kaidah.php?kode=<?php echo $row['kode_penyakit'] ?> class="btn btn-primary">Ya</a>
+              <a href=process/delete/hapus_kaidah.php?kode=<?php echo $row['kode_penyakit'] ?> class="btn btn-primary">Ya</a>
               <button class="btn btn-danger" type="button" data-dismiss="modal" aria-label="Close">Batal</button>
             </div>
           </div>
@@ -229,5 +229,5 @@
     <?php } ?>
 
    <?php 
-      include "footer.php";
+      include "view/footer.php";
     ?>
