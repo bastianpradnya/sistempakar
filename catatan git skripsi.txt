@@ -1,7 +1,0 @@
-C:\xampp\htdocs\sistempakar
-
-sistempakar> git pull origin master
-(baru boleh edit project)
-sistempakar> git commit -a
-esc kemudian shift+z 2x untuk keluar dari editor vi'
-sistempakar> git push origin master
